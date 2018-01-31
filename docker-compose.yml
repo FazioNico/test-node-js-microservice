@@ -1,0 +1,41 @@
+version: "2"
+
+services:
+
+  gateway:
+    build: ./packages/gateway/
+    links:
+      - server
+      - colorapi
+    ports:
+      - 80:80
+    depends_on:
+      - server
+      - front
+      - colorapi
+
+  server:
+    image: server
+    build: ./packages/server
+    volumes:
+      - ./packages/server:/usr/server
+    ports:
+      - 3000:3000
+    links:
+      - colorapi
+
+  colorapi:
+    image: colorapi
+    build: ./packages/color-api
+    volumes:
+      - ./packages/color-api:/usr/color-api
+    ports:
+      - 3002:3002
+
+  front:
+    image: front
+    build: ./packages/front
+    volumes:
+      - ./packages/front:/usr/front
+    ports:
+      - 8000:8000

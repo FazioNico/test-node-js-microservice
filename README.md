@@ -3,6 +3,8 @@ Test using Docker to build microservice.
 
 ## Start
 ```
+$ git clone
+$ cd my-app
 $ docker-compose build
 $ docker-compose up
 ```

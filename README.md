@@ -13,7 +13,7 @@ $ docker-compose up
 ## Use
 
 <b>Docker Gateway (alias http://localhost:80)</b>
-- server configuration to get all docker container available from `localhost:80`. Default docker link to `http://localhost:80`: Docker front
+- nginx configuration to get all docker container available from `localhost:80`. Default docker link to `http://localhost:80` => Docker front
 
 <b>Docker front (alias http://localhost:8000/)</b>
 - `localhost` to view JS frontend application

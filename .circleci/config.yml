@@ -24,7 +24,7 @@ jobs:
       - checkout
       - setup_remote_docker:
           docker_layer_caching: true
-      - run: bash scripts/build-images.sh
+      - run: sh scripts/build-images.sh
       # - run: |
       #     echo $(pwd)
       #     cd packages/server

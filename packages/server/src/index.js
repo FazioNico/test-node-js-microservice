@@ -34,6 +34,21 @@ app
     res.status(200).json({msg: 'foo 1 test'})
   })
   .get('/server/random-color', requestAPI)
+
+  /// Kubernetes Test
+
+  .get('/health', (req, res)=> {
+    let rand = Math.floor(Math.random() * Math.floor(4));
+    if(process.env.HEALTH){
+      (rand === 1)
+        ? res.status(200).json({healthy: true})
+        : res.status(404).json({healthy: false});
+      return;
+    }
+    res.status(200).json({healthy: true})
+  })
+
+  // Handle error
   .use((err, req, res, next) =>{
     console.log(err);
     res.status(500).json({code:500, data:err, message:'Error Server'});

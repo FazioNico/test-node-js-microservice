@@ -9,20 +9,18 @@ jobs:
       # specify the version you desire here
       - image: circleci/node:7.10
 
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
     working_directory: ~/repo
 
     steps:
       - checkout
-
       - run: cd packages/server && yarn install
 
-      # run tests!
-    #  - run: yarn test
+
+  deploy:
+    docker:
+      - image: docker
+    steps:
+      - checkout
       - run: |
           echo $(pwd)
           cd packages/server
@@ -30,3 +28,12 @@ jobs:
           docker build -t registry.agenda.ch/nfz/server_test:$TAG  .
           docker login -u $USER_DOCKER -p $PASS_DOCKER
           docker push registry.agenda.ch/nfz/server_test:$TAG
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build

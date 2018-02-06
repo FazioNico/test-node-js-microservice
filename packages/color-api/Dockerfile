@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:8.9-alpine
 
 RUN mkdir -p /usr/color-api
 WORKDIR /usr/color-api

@@ -13,7 +13,8 @@ jobs:
 
     steps:
       - checkout
-      - run: cd packages/server && yarn install
+      - run: bash scripts/install.sh
+      # - run: cd packages/server && yarn install
       # - run: npm run test
 
   deploy:

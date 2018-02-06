@@ -18,14 +18,13 @@ jobs:
 
   deploy:
     docker:
-      - image: docker
+      - image: docker:dind
     steps:
       - checkout
       - run: |
           echo $(pwd)
           cd packages/server
           TAG=0.1.$CIRCLE_BUILD_NUM
-          sudo service docker start 
           docker build -t registry.agenda.ch/nfz/server_test:$TAG  .
           docker login -u $USER_DOCKER -p $PASS_DOCKER
           docker push registry.agenda.ch/nfz/server_test:$TAG

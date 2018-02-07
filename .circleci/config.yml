@@ -44,3 +44,5 @@ workflows:
       - deploy:
           requires:
             - test
+          filters:
+            branch: master # /feature-.*/

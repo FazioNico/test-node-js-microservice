@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  test:
+  install:
     docker:
       # specify the version you desire here
       - image: circleci/node:7.10
@@ -14,8 +14,17 @@ jobs:
     steps:
       - checkout
       - run: bash scripts/install.sh
-      # - run: cd packages/server && yarn install
-      # - run: npm run test
+
+  test:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:7.10
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - run: bash scripts/run-test.sh
 
   deploy:
     docker:
@@ -37,7 +46,8 @@ workflows:
   version: 2
   build_and_deploy:
     jobs:
+      - install
       - test
       - deploy:
           requires:
-            - test
+            - install

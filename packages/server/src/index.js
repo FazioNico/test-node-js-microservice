@@ -53,6 +53,9 @@ app
     console.log(err);
     res.status(500).json({code:500, data:err, message:'Error Server'});
   })
-  .listen(3000, ()=> {
+
+  var server = app.listen(3000, ()=> {
     console.log('Example app listening on port 3000!')
-  })
+  });
+
+  module.exports = server;

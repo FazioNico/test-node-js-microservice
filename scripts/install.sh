@@ -4,7 +4,7 @@ rootDirectory=$(pwd)
 for dir in $(ls -d  packages/*); do
   # go to microservice folder
   cd $dir
-  echo "---> $(pwd | sed 's#.*/##')"
+  echo "[INSTALL] $(pwd | sed 's#.*/##') microservice: packages dependencies"
   # install project dependencies
   npm install
   # return to rootDirectory project

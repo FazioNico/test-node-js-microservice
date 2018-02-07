@@ -6,7 +6,6 @@ version: 2
 jobs:
   install:
     docker:
-      # specify the version you desire here
       - image: circleci/node:7.10
 
     working_directory: ~/repo
@@ -17,7 +16,6 @@ jobs:
 
   test:
     docker:
-      # specify the version you desire here
       - image: circleci/node:7.10
 
     working_directory: ~/repo
@@ -34,13 +32,6 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true
       - run: sh scripts/build-images.sh
-      # - run: |
-      #     echo $(pwd)
-      #     cd packages/server
-      #     TAG=0.1.$CIRCLE_BUILD_NUM
-      #     docker build -t registry.agenda.ch/nfz/server_test:$TAG  .
-      #     docker login registry.agenda.ch -u $USER_DOCKER -p $PASS_DOCKER
-      #     docker push registry.agenda.ch/nfz/server_test:$TAG
 
 workflows:
   version: 2

@@ -43,10 +43,8 @@ workflows:
             - install
       - deploy:
           requires:
-            - test
+            - install
           filters:
             branches:
               only:
                 - master # /feature-.*/
-
-            # testing...

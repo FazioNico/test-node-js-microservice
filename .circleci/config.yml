@@ -45,5 +45,8 @@ workflows:
           requires:
             - test
           filters:
-            branch: master # /feature-.*/
+            branches:
+              only:
+                - master # /feature-.*/
+
             # testing...

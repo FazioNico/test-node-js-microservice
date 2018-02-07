@@ -24,7 +24,7 @@ jobs:
 
     steps:
       - checkout
-      - run: bash scripts/run-test.sh
+      - run: npm install -g mocha && bash scripts/run-test.sh
 
   deploy:
     docker:

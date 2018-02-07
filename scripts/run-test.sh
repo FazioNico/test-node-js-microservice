@@ -7,7 +7,6 @@ for dir in $(ls -d  packages/*); do
   # run test if define with npm
   if [ -f package.json ]; then
     echo "[TEST] $(pwd | sed 's#.*/##') microservice: starting test..."
-    npm install -g mocha
     npm run test
   fi
   # run test if define with otherlang

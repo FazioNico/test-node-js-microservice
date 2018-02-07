@@ -42,8 +42,8 @@ workflows:
           requires:
             - install
       - deploy:
-          filters:
-            branch: master # /feature-.*/
           requires:
             - test
+          filters:
+            branch: master # /feature-.*/
             # testing...

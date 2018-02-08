@@ -9,11 +9,11 @@ for dir in $(ls -d  packages/*); do
   # tag image
   TAG=0.1.$CIRCLE_BUILD_NUM
   # build docker image
-  docker build -t registry.agenda.ch/nfz_test/$servicename:$TAG  .
+  docker build -t registry.agenda.ch/fazio/$servicename:$TAG  .
   # login to docker hub
   docker login registry.agenda.ch -u $USER_DOCKER -p $PASS_DOCKER
   # push docker image
-  docker push registry.agenda.ch/nfz_test/servicename:$TAG
+  docker push registry.agenda.ch/fazio/servicename:$TAG
   # return to rootDirectory project
   cd $rootDirectory
 done

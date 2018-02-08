@@ -17,3 +17,5 @@ for dir in $(ls -d  packages/*); do
   # return to rootDirectory project
   cd $rootDirectory
 done
+
+#..
